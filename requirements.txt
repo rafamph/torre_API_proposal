@@ -1,0 +1,7 @@
+requests==2.9.1
+WTForms==2.2.1
+scipy==1.0.1
+numpy==1.14.2
+Flask_RESTful==0.3.8
+Flask_WTF==0.14.3
+Flask==1.1.1

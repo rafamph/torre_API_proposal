@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>User Metrics</title>
+        <link rel="stylesheet" type="text/css" href="custom.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    </head>
+    <body>
+
+      <canvas id="chart" width="100" height="50"></canvas>
+
+      <script>
+
+          Chart.defaults.global.legend.display = false;
+
+          var options = {
+      type: 'bar',
+      data: {
+        labels: ["Q1", "Q2", "P90", "P95", "P99"],
+        datasets: [
+    	    {
+    	      label: 'Achievements',
+            backgroundColor: ["rgba(0,255,0,0.7)", "rgba(0,128,128, 0.7)", "rgba(0,128,0,0.7)", "rgba(0,0,255,0.7)", "rgba(0,0,128,0.7)", "rgba(0,0,0,0.7)"],
+    	      data: [{{ info['Q1_summary']['achievements'] }}, {{ info['Q2_summary']['achievements'] }}, {{ info['P90_summary']['achievements'] }}, {{ info['P95_summary']['achievements'] }}, {{ info['P99_summary']['achievements'] }}],
+          	borderWidth: 1
+        	},
+    			{
+    				label: 'Education',
+            backgroundColor: ["rgba(0,255,0,0.6)", "rgba(0,128,128, 0.6)", "rgba(0,128,0,0.6)", "rgba(0,0,255,0.6)", "rgba(0,0,128,0.6)", "rgba(0,0,0,0.6)"],
+    				data: [{{ info['Q1_summary']['education'] }}, {{ info['Q2_summary']['education'] }}, {{ info['P90_summary']['education'] }}, {{ info['P95_summary']['education'] }}, {{ info['P99_summary']['education'] }}],
+    				borderWidth: 1
+    			},
+          {
+            label: 'Interests',
+            backgroundColor: ["rgba(0,255,0,0.5)", "rgba(0,128,128, 0.5)", "rgba(0,128,0,0.5)", "rgba(0,0,255,0.5)", "rgba(0,0,128,0.5)", "rgba(0,0,0,0.5)"],
+            data: [{{ info['Q1_summary']['interests'] }}, {{ info['Q2_summary']['interests'] }}, {{ info['P90_summary']['interests'] }}, {{ info['P95_summary']['interests'] }}, {{ info['P99_summary']['interests'] }}],
+            borderWidth: 1
+          },
+          {
+            label: 'Jobs',
+            backgroundColor: ["rgba(0,255,0,0.4)", "rgba(0,128,128, 0.4)", "rgba(0,128,0,0.4)", "rgba(0,0,255,0.4)", "rgba(0,0,128,0.4)", "rgba(0,0,0,0.4)"],
+            data: [{{ info['Q1_summary']['jobs'] }}, {{ info['Q2_summary']['jobs'] }}, {{ info['P90_summary']['jobs'] }}, {{ info['P95_summary']['jobs'] }}, {{ info['P99_summary']['jobs'] }}],
+            borderWidth: 1
+          },
+          {
+            label: 'Projects',
+            backgroundColor: ["rgba(0,255,0,0.3)", "rgba(0,128,128, 0.3)", "rgba(0,128,0,0.3)", "rgba(0,0,255,0.3)", "rgba(0,0,128,0.3)", "rgba(0,0,0,0.3)"],
+            data: [{{ info['Q1_summary']['projects'] }}, {{ info['Q2_summary']['projects'] }}, {{ info['P90_summary']['projects'] }}, {{ info['P95_summary']['projects'] }}, {{ info['P99_summary']['projects'] }}],
+            borderWidth: 1
+          },
+          {
+            label: 'Publications',
+            backgroundColor: ["rgba(0,255,0,0.2)", "rgba(0,128,128, 0.2)", "rgba(0,128,0,0.2)", "rgba(0,0,255,0.2)", "rgba(0,0,128,0.2)", "rgba(0,0,0,0.2)"],
+            data: [{{ info['Q1_summary']['publications'] }}, {{ info['Q2_summary']['publications'] }}, {{ info['P90_summary']['publications'] }}, {{ info['P95_summary']['publications'] }}, {{ info['P99_summary']['publications'] }}],
+            borderWidth: 1
+          }
+    		]
+      },
+      options: {
+      	scales: {
+        	yAxes: [{
+            ticks: {
+    					reverse: false
+            }
+          }]
+        }
+      }
+    }
+
+    var ctx = document.getElementById('chart').getContext('2d');
+    new Chart(ctx, options);
+
+      </script>
+
+    </body>
+</html>

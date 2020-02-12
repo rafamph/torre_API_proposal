@@ -1,0 +1,10 @@
+canvas { background-color : #eee;
+}
+
+* {
+  font-family: Arial;
+}
+
+#username, label {
+  font-family: 'Sriracha', cursive;
+}
